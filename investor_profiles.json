@@ -1,0 +1,26 @@
+{
+  "investors": [
+    {
+      "id":"INV001",
+      "name":"ClimateCity Ventures",
+      "stage_focus":["seed","series_a"],
+      "ticket_min_usd":100000,
+      "ticket_max_usd":5000000,
+      "preferred_geographies":["North America","Europe"],
+      "industry_tags":["climatetech","smart_city","iot","waste_management"],
+      "thesis_text":"We invest in early-stage climate tech companies that reduce urban carbon and resource use; prefer pilots with municipal customers.",
+      "contact": {"email":"contact@climatecity.vc", "source":"manual-list"}
+    },
+    {
+      "id":"INV002",
+      "name":"UrbanImpact Capital",
+      "stage_focus":["series_a","series_b"],
+      "ticket_min_usd":2000000,
+      "ticket_max_usd":10000000,
+      "preferred_geographies":["Europe"],
+      "industry_tags":["infrastructure","smart_city"],
+      "thesis_text":"We fund scaling solutions for city infrastructure with strong unit economics.",
+      "contact": {"email":"hello@urbanimpact.vc", "source":"manual-list"}
+    }
+  ]
+}

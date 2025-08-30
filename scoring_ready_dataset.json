@@ -1,0 +1,133 @@
+{
+  "startup_id": "S001",
+  "name": "EcoTech Solutions",
+  "sector": "waste_management",
+  "problem": "Inefficient urban waste collection; high cost and low recycling rates. Cost impact $380M annually; environmental improvement potential quantified.",
+  "solution": "AI-powered routing + IoT smart bins. Unique differentiation: proprietary routing algorithm + sensor integration reduces collection trips by 40% vs competitors.",
+  "market": {
+    "market_size_usd": 3800000000,
+    "growth_rate": 0.15,
+    "geographies": ["North America","Europe"],
+    "icp_segments": ["municipal_governments","commercial_property_managers","residential_communities"],
+    "TAM": 3800000000,
+    "SAM": 1500000000,
+    "SOM": 500000000
+  },
+  "team": {
+    "members": [
+      {"name":"Sarah Johnson","role":"CEO","years_experience":10},
+      {"name":"Mike Chen","role":"CTO","years_experience":8},
+      {"name":"Lisa Rodriguez","role":"COO","years_experience":12}
+    ],
+    "total_years_parsed": 30
+  },
+  "product_tech": {
+    "mvp_status": "pilots_completed",
+    "tech_stack": ["python","tensorflow","pytorch","flutter","laravel","iot_sensors"],
+    "mvp_metrics": {
+      "IoT_sensors_uptime_pct": 99,
+      "Routing_reduction_pct": 40,
+      "MobileApp_retention_pct": 95
+    },
+    "moat_hint": "Data network effects from routing + sensor data"
+  },
+  "traction": {
+    "mrr_usd": 75000,
+    "preorders_usd": 2200000,
+    "pilot_cost_reduction_pct": 35,
+    "recycling_improvement_pct": 60,
+    "user_retention_pct": 95
+  },
+  "business_model": {
+    "type": "subscription",
+    "pricing_tiers": {
+      "Basic": 2000,
+      "Premium": 5000,
+      "Enterprise": 10000
+    },
+    "revenue_streams": ["municipality_subscriptions"]
+  },
+  "competition": [
+    {"name":"WasteRobotics","market_share_pct":25},
+    {"name":"RecycleBot","market_share_pct":15}
+  ],
+  "go_to_market": {
+    "channels": ["direct_municipal_sales","hauler_partnerships","pilot_referrals"],
+    "gtm_channels_count": 3,
+    "CAC_usd": 15000
+  },
+  "ask": {
+    "round": "Series A",
+    "amount_usd": 5000000,
+    "use_of_funds": ["expand_to_50_municipalities","hire_25","ai_enhancement"]
+  },
+  "matching_prefs": {
+    "desired_ticket_usd": 2000000,
+    "desired_stage": "Series A",
+    "preferred_geographies": ["North America","Europe"],
+    "industry_tags": ["waste_management","smart_city","iot","climatetech"],
+    "weight": 0.2
+  },
+  "extraction_confidence_overall": 0.88,
+  "completeness_ratio": 1.0,
+  "pitch_exists": true,
+  "preliminary_scores": {
+    "Problem_score": 5,
+    "Solution_score": 5,
+    "Market_score": 5,
+    "Team_score": 5,
+    "Traction_score": 5,
+    "Business_Model_score": 5,
+    "Product_Tech_score": 5,
+    "Go_to_Market_score": 5,
+    "Competition_score": 5,
+    "Financial_Ask_score": 5
+  },
+  "recommendation_inputs": {
+    "Problem": {"text":"Add quantified cost + environmental impact (done)","priority":"high"},
+    "Solution": {"text":"Explain AI differentiation clearly (done)","priority":"high"},
+    "Market": {"text":"Competitor analysis + growth details included","priority":"medium"},
+    "Product": {"text":"MVP metrics validated","priority":"medium"},
+    "Team": {"text":"Founders' scalability experience highlighted","priority":"medium"},
+    "Business_Model": {"text":"Pricing tiers & revenue split clarified","priority":"high"}
+  },
+  "investor_fit": {
+    "top_matches":[
+      {
+        "investor_id":"INV001",
+        "investor_name":"ClimateCity Ventures",
+        "match_score":0.87,
+        "matching_weighted_score":0.174,
+        "reason":"Strong industry tag overlap (climatetech, waste_management), stage fits (Series A), geography compatible, ticket range covers $2M ask. Semantic similarity 0.91",
+        "contact_email":"contact@climatecity.vc"
+      },
+      {
+        "investor_id":"INV002",
+        "investor_name":"UrbanImpact Capital",
+        "match_score":0.73,
+        "matching_weighted_score":0.146,
+        "reason":"Geography aligned (Europe), stage aligned; slightly higher ticket expectations but still plausible with $5M request",
+        "contact_email":"hello@urbanimpact.vc"
+      }
+    ],
+    "method":"filters(stage, ticket, geography) + embeddings_similarity(weighted) -> normalized score"
+  },
+  "vector_features": {
+    "problem_embedding":"<vector_512>",
+    "solution_embedding":"<vector_512>",
+    "market_embedding":"<vector_512>",
+    "industry_tags_embedding":"<vector_512>",
+    "startup_embedding":"<vector_2048>",
+    "numeric_features":{
+      "market_size_usd":3800000000,
+      "market_growth_rate":0.15,
+      "team_total_years":30,
+      "mrr_usd":75000,
+      "pilot_cost_reduction_pct":35,
+      "user_retention_pct":95,
+      "gtm_channels_count":3,
+      "desired_ticket_usd":2000000
+    },
+    "onehot_features":{"biz_model_onehot":"subscription","desired_stage":"series_a"}
+  }
+}

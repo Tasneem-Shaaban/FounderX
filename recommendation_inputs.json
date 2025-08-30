@@ -1,0 +1,10 @@
+{
+  "S001": {
+    "Problem": {"text":"Add cost impact + environmental data", "priority":"high"},
+    "Solution": {"text":"Explain unique AI differentiation more clearly", "priority":"high"},
+    "Market": {"text":"Add competitor analysis + growth details", "priority":"medium"},
+    "Product": {"text":"Add MVP metrics validation", "priority":"medium"},
+    "Team": {"text":"Highlight scalability experience", "priority":"medium"},
+    "Business_Model": {"text":"Clarify pricing tiers & revenue split", "priority":"high"}
+  }
+}

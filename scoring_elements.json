@@ -1,0 +1,136 @@
+{
+  "scale_definition": {
+    "range": "0-5",
+    "meaning": {
+      "0": "Does not exist / missing",
+      "1": "Weak - no evidence",
+      "2": "weak - limited detail",
+      "3": "Average - reasonable but incomplete",
+      "4": "Strong — clear and supported",
+      "5": "Excellent — quantified and validated"
+    }
+  },
+
+  "weights": {
+    "problem": 0.20,
+    "solution": 0.18,
+    "market": 0.16,
+    "competition": 0.11,
+    "product_tech": 0.05,
+    "business_model": 0.045,
+    "go_to_market": 0.045,
+    "traction": 0.05,
+    "team": 0.09,
+    "financial_ask": 0.07
+  },
+
+  "elements": [
+    {
+      "key":"problem",
+      "critical":true,
+      "type":"text+numeric",
+      "sub_criteria": {"clarity":0.12,"relevance":0.08},
+      "requires":["pain_point","severity_evidence"],
+      "thresholds_numeric": {
+        "severity_example_count": {"5":2,"4":1,"3":0.5, "2":0, "1":0}
+      },
+      "missing_handling":"score=0; flag_for_user_fill"
+    },
+    {
+      "key":"solution",
+      "critical":true,
+      "type":"text",
+      "sub_criteria":{"innovation":0.10,"feasibility":0.08},
+      "requires":["how_it_works","why_better"],
+      "evaluation_rules":"innovation → novelty evidence (patent/pilot/unique metric). feasibility→ pilot evidence or validated KPI"
+    },
+    {
+      "key":"market",
+      "critical":true,
+      "type":"text+numeric",
+      "sub_criteria": {"TAM/SAM/SOM": 0.10, "target_customers_clarity": 0.06},
+      "requires":["TAM/SAM/SOM","growth","ICP"],
+      "normalization":"$ values → integers (usd). use log-scale for very large TAMs",
+      "thresholds_numeric": {
+        "market_size_usd": {"5":2000000000, "4":500000000, "3":100000000, "2":10000000, "1":1}
+      }
+    },
+    {
+      "key":"competition",
+      "critical":false,
+      "type":"text+numeric",
+      "sub_criteria":{"competitor_analysis":0.06,"competitor_advantage":0.05},
+      "requires":["competitor analysis","competitor advantage"],
+      "heuristics":"num_competitors_found, unique_moat_phrases => boost"
+    },
+    {
+      "key":"product_tech",
+      "critical":true,
+      "type":"text",
+      "sub_criteria":{"clarity":0.05},
+      "requires":["mvp_status","tech_stack","moat"],
+      "thresholds_text":"mvp_status in ['prototype','pilots_completed','commercial'] => mapping to scores"
+    },
+    {
+      "key":"business_model",
+      "critical":true,
+      "type":"text",
+      "sub_criteria":{"type":0.045},
+      "requires":["pricing","revenue_streams"],
+      "notes":"if pricing tiers missing => lower score and add suggestion"
+    },
+    {
+      "key":"go_to_market",
+      "critical":false,
+      "type":"text",
+      "sub_criteria":{"clarity":0.045},
+      "requires":["channels","CAC_hint"],
+      "missing_handling":"score_low_but_show_actionable_tip"
+    },
+    {
+      "key":"traction",
+      "critical":true,
+      "type":"numeric",
+      "sub_criteria":{"metrics":0.05},
+      "requires":["mrr","users","kpis"],
+      "numeric_rules":{"mrr_usd":{"5":100000,"4":25000,"3":5000,"2":1000,"1":1}}
+    },
+    {
+      "key":"team",
+      "critical":true,
+      "type":"text+numeric",
+      "sub_criteria":{"experience":0.09},
+      "requires":["roles","relevant_experience"],
+      "compute":"team_total_years, presence_of_founders_with_relevant_experience"
+    },
+    {
+      "key":"financial_ask",
+      "critical":true,
+      "type":"text+numeric",
+      "sub_criteria":{"clarity":0.07},
+      "requires":["amount","use_of_funds","milestones"],
+      "validation":"ask_amount numeric and milestones linked -> higher clarity score"
+    },
+    {
+      "key":"matching_prefs",
+      "critical":false,
+      "type":"structured",
+      "sub_criteria":{"alignment":0},
+      "requires":["desired_ticket_usd","stage","geography","industry_tags"],
+      "notes":"used for investor-fit (separate score)"
+    }
+  ],
+
+   "composite_scores": {
+    "formula": 
+      "weighted_total = sum(element_score_i * weight_i); investment_readiness = weighted_total * extraction_confidence_overall * completeness_ratio",
+    "investment_readiness_scale": "0-5",
+    "investor_fit": "matching_alignment_score (0-1) * matching_strength_weight (default 0.2)"
+  },
+
+  "implementation_notes": {
+    "confidence_calc": "field_confidence = NLP_confidence*0.7 + numeric_parse_success*0.3; extraction_confidence_overall = mean(field_confidences)",
+    "completeness_calc": "completeness_ratio = (#non_missing_critical_fields) / (#critical_fields)",
+    "missing_policy": "if completeness_ratio < 0.5 => flag manual review and show mandatory fill prompts to user"
+  }
+}
